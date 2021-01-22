@@ -1,0 +1,121 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+html {
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: #f2f2f2;
+    font-family: Arial;
+    font-size: 14px;
+}
+
+img {
+    width: 100%;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.container {
+    display : grid;
+    grid-template-areas:
+    'header header header'
+    'menu menu menu'
+    'main main side'
+    'footer footer footer';
+}
+
+.header {
+    grid-area: header;
+    text-align: center;
+    padding-top: 1rem;
+    color: #254040;
+    background-color: #65ccb0;
+    font-family: Verdana;
+    font-size: 1.1rem;
+}
+
+.menu {
+    grid-area: menu;
+    display: flex;
+    width: 100%;
+    background-color: #65ccb0;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.main {
+    grid-area: main;
+    padding: 1rem;
+    font-size: 1.2rem;
+    background-color: #f2f2f2;
+}
+
+.side {
+    grid-area: side;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: rgba(61, 148, 94, 0.7);
+    font-size: 1.2rem;
+    border-radius: 1rem;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #182828;
+    color: lightgray;
+    height: 5rem;
+    padding: 1rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.menu a {
+    padding: 1.3rem;
+    display: block;
+    text-align: center;
+    flex-grow: 1;
+    font-size: 1.25rem;
+    color: #254040;
+    text-decoration: none;
+}
+
+.menu a:hover, .menu a:active {
+    background-color: #7adec3;
+}
+
+@media only screen and (max-width: 1100px) {
+    html, body {
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    html,body {
+        margin: 0;
+        width: 100%;
+        min-width: fit-content;
+        font-size: 16px;
+    }
+    .container {
+        width: 100%;
+        grid-template-areas:
+        'header'
+        'menu'
+        'main'
+        'side'
+        'footer';
+    }
+
+    .menu {
+        border-radius: 0;
+    }
+
+    .footer {
+        border-radius: 0;
+    }
+}
