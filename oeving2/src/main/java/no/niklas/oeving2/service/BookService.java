@@ -31,6 +31,7 @@ public class BookService {
         if(book.getId() == 0) book.setId(Math.abs(new Random().nextLong()));
 
         bookDao.addBook(book);
+        verifyAuthors(book);
         addBookToAuthors(book);
         return book;
     }
@@ -40,6 +41,7 @@ public class BookService {
         removeBookFromAuthors(oldBook);
 
         bookDao.updateBook(id, book);
+        verifyAuthors(book);
         addBookToAuthors(book);
         return "Updated Book";
     }
@@ -60,6 +62,13 @@ public class BookService {
                 ArrayList<Long> bookIds = author.getBookIds();
                 if(!bookIds.contains(book.getId())) bookIds.add(book.getId());
             }
+        });
+    }
+
+    public void verifyAuthors(Book book) {
+        book.getAuthorIds().removeIf(authorId -> {
+            Author author = authorDao.getAuthorById(authorId);
+            return author == null;
         });
     }
 

@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Oeving2Application {
 
 	public static void main(String[] args) {
-	    DummyDB.makeDummyData();
 		SpringApplication.run(Oeving2Application.class, args);
 	}
 
