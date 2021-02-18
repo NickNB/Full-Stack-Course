@@ -14,8 +14,9 @@ public class AuthorController {
     private AuthorService authorService;
 
     @GetMapping()
-    public List<Author> getAuthors() {
-        return authorService.getAuthors();
+    public List<Author> getAuthors(@RequestParam(required = false) String search) {
+        if(search == null) return authorService.getAuthors();
+        else return authorService.search(search);
     }
 
     @GetMapping("{id}")
@@ -36,10 +37,5 @@ public class AuthorController {
     @DeleteMapping("{id}")
     public String deleteAuthor(@PathVariable long id) {
         return authorService.deleteAuthor(id);
-    }
-
-    @GetMapping("search")
-    public List<Author> search(@RequestParam String search) {
-        return authorService.search(search);
     }
 }

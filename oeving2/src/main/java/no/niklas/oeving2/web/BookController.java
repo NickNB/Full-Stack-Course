@@ -14,8 +14,9 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping()
-    public List<Book> getBooks() {
-        return bookService.getBooks();
+    public List<Book> getBooks(@RequestParam(required = false) String search) {
+        if(search == null) return bookService.getBooks();
+        else return bookService.search(search);
     }
 
     @GetMapping("{id}")
@@ -36,10 +37,5 @@ public class BookController {
     @DeleteMapping("{id}")
     public String deleteBook(@PathVariable long id) {
         return bookService.deleteBook(id);
-    }
-
-    @GetMapping("search")
-    public List<Book> search(@RequestParam String search) {
-        return bookService.search(search);
     }
 }

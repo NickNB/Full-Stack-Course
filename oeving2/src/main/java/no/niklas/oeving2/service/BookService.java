@@ -4,6 +4,8 @@ import no.niklas.oeving2.dao.AuthorDao;
 import no.niklas.oeving2.dao.BookDao;
 import no.niklas.oeving2.model.Author;
 import no.niklas.oeving2.model.Book;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import java.util.Random;
 
 @Service
 public class BookService {
+    Logger logger = LoggerFactory.getLogger(BookService.class);
+
     @Autowired
     private BookDao bookDao;
     @Autowired
@@ -83,6 +87,8 @@ public class BookService {
     }
 
     public List<Book> search(String search) {
+        logger.info("Searched with search word: " + search);
+
         List<Book> retLs = new ArrayList<>(bookDao.getBooks());
         retLs.removeIf(book ->
                 !book.getTitle().toLowerCase().contains(search.toLowerCase()));
