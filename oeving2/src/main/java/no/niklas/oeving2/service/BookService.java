@@ -73,12 +73,24 @@ public class BookService {
         });
     }
 
-    ////removes bookIds from author if book doesn't contain this author
-    //public void updateAuthor(Author author) {
-    //    author.getBookIds().removeIf(bookId -> {
-    //        Book checkBook = bookDao.getBookById(bookId);
-    //        if(checkBook == null) return true;
-    //        return !checkBook.getAuthorIds().contains(author.getId());
-    //    });
-    //}
+    public List<Book> search(String search) {
+        List<Book> retLs = new ArrayList<>(bookDao.getBooks());
+        retLs.removeIf(book ->
+                !book.getTitle().toLowerCase().contains(search.toLowerCase()));
+
+        List<Author> authors = new ArrayList<>(authorDao.getAuthors());
+        authors.removeIf(author ->
+                !author.getName().toLowerCase().contains(search.toLowerCase()));
+
+        authors.forEach(author -> {
+            author.getBookIds().forEach(bookId -> {
+                Book book = bookDao.getBookById(bookId);
+                if(book != null) {
+                    if(!retLs.contains(book)) retLs.add(book);
+                }
+            });
+        });
+
+        return retLs;
+    }
 }

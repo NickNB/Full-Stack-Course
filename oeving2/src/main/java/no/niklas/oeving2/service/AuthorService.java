@@ -70,11 +70,11 @@ public class AuthorService {
         });
     }
 
-    //public void updateBook(Book book) {
-    //    book.getAuthorIds().removeIf(authorId -> {
-    //        Author checkAuthor = authorDao.getAuthorById(authorId);
-    //        if(checkAuthor == null) return true;
-    //        return !checkAuthor.getBookIds().contains(book.getId());
-    //    });
-    //}
+    public List<Author> search(String searchStr) {
+        List<Author> retLs = new ArrayList<>(authorDao.getAuthors());
+        retLs.removeIf(author ->
+                !author.getName().toLowerCase().contains(searchStr.toLowerCase()));
+
+        return retLs;
+    }
 }
