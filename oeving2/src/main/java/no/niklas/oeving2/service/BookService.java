@@ -87,7 +87,7 @@ public class BookService {
     }
 
     public List<Book> search(String search) {
-        logger.info("Searched with search word: " + search);
+        logger.info("Searched for book with word: " + search);
 
         List<Book> retLs = new ArrayList<>(bookDao.getBooks());
         retLs.removeIf(book ->

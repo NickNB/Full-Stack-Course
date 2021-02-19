@@ -1,6 +1,5 @@
 package no.niklas.oeving2;
 
-import no.niklas.oeving2.model.Address;
 import no.niklas.oeving2.model.Author;
 import no.niklas.oeving2.model.Book;
 

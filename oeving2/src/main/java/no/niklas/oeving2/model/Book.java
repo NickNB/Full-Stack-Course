@@ -1,8 +1,6 @@
 package no.niklas.oeving2.model;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class Book {
     private long id;

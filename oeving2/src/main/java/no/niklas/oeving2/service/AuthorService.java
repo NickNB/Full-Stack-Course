@@ -84,7 +84,7 @@ public class AuthorService {
     }
 
     public List<Author> search(String searchStr) {
-        logger.warn("Searched with search word: " + searchStr);
+        logger.warn("Searched for author with word: " + searchStr);
         
         List<Author> retLs = new ArrayList<>(authorDao.getAuthors());
         retLs.removeIf(author ->

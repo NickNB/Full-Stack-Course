@@ -1,9 +1,6 @@
 package no.niklas.oeving2.model;
 
-import javax.annotation.processing.Generated;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class Author {
     private long id;
